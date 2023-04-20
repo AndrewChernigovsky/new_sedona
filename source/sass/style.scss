@@ -1,0 +1,11 @@
+@use "variables";
+@use "fonts";
+
+.page {
+	font-family: variables.$primary-text, 'Arial', sans-serif;
+	font-size: 18px;
+}
+
+// h1 {
+// 	font-family: variables.$primary-text;
+// }

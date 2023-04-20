@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+   <link rel="stylesheet" href="css/style.min.css">
+    </head>
+    <body class="page__body">
+        <header class="main-header">
+            <a href="index.html" class="main-header main-header__logo">
+                <img
+                    class="logo"
+                    src="img/logo.png"
+                    alt="Седона - небольшой городок в Аризоне, заслуживающий большего"
+                    width="185"
+                    height="96"
+                >
+            </a>
+            <nav class="main-nav">
+                <button type="button" class="main-nav__toggle">
+                    <span class="visually-hidden">Открыть меню</span>
+                </button>
+                <div class="main-nav__wrapper">
+                    <ul class="main-nav__list site-list">
+                        <li class="site-list site-list__item">
+                            <a href="#!">Главная</a>
+                        </li>
+                        <li class="site-list site-list__item">
+                            <a href="catalog.html">Фото и видео</a>
+                        </li>
+                        <li class="site-list site-list__item  site-list__item--active">
+                            <a href="form.html">Форма Отзыва</a>
+                        </li>
+                        <li class="site-list site-list__item">
+                            <a href="#!">HTML ACADEMY</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <main class="main-container">
+            <p>Оставьте свой отзыв</p>
+            <p>Помогите нашим отелям стать лучше! оставьте отзыв о них, а также о посещенных вами достопримечательностях</p>
+
+			<form class="form" action="" method="get">
+				<div class="form__registration">
+					<p>Представьтесь:</p>
+					<label for="userName">ИМЯ*:</label>
+					<input type="text" placeholder="Пётр" id="userName" aria-label="Введите своё имя" name="userName" required>
+					<label for="userSurnName">ФАМИЛИЯ*:</label>
+					<input type="text" placeholder="Пустота" id="userSurnName" aria-label="Введите свою фамилию" name="userSurnName" required>
+					<label for="userSecondName">Отчество:</label>
+					<input type="text" placeholder="Викторович" id="userSecondName" aria-label="Введите своё отчество" name="userSecondName" required>
+				</div>
+				<div class="form__registration">
+					<p>Контактная информация:</p>
+					<label for="userPhone">Контактный телефон*:</label>
+					<input type="tel" placeholder="Введите телефон" id="userPhone" name="userPhone" aria-label="Введите свой телефон" required>
+					<label for="userEmail">Электронная почта*:</label>
+					<input type="email" placeholder="Введите e-mail" id="userEmail" name="userEmail" aria-label="Введите свой емэйл" required>
+				</div>
+				<div class="form__registration">
+					<p>ВАше Общее впечатление:</p>
+					<label for="impressionGood">Скорее положительное</label>
+					<input type="radio" id="impressionGood" name="impression" aria-label="Скорее положительное" checked>
+					<label for="impressionBad">Скорее отрицательное</label>
+					<input type="radio" id="impressionBad"  name="impression" aria-label="Скорее отрицательное">
+					<label for="impressionNotAnwser">Затрудняюсь ответить</label>
+					<input type="radio" id="impressionNotAnwser"  name="impression" aria-label="Затрудняюсь ответить">
+				</div>
+				<div class="form__registration">
+					<p>посещенные достопримечательности:</p>
+					<label for="DevilBridge">Мост Дьявола</label>
+					<input type="checkbox" id="DevilBridge" name="DevilBridge"  aria-label="Мост Дьявола">
+					<label for="MountBell">Гора-Колокол</label>
+					<input type="checkbox" id="MountBell"  name="MountBell"  aria-label="Гора-Колокол">
+					<label for="slidePark">Слайд-парк</label>
+					<input type="checkbox" id="slidePark"  name="slidePark"  aria-label="Слайд-парк">
+					<label for="redRocks">Красные скалы</label>
+					<input type="checkbox" id="redRocks"  name="impression"  aria-label="Красные скалы">
+				</div>
+				<div class="form__registration">
+					<p>Опишите свои эмоции:</p>
+					<textarea name="" id="" cols="30" rows="10" placeholder="Опишите подробно все свои восторги "></textarea>
+				</div>
+				<button type="submit">ОТПРАВИТЬ ОТЗЫВ</button>
+				<small>* — обязательные поля</small>
+			</form>
+
+
+
+			<div class="map">
+				
+			</div>
+			<footer class="main-footer">
+				<a href="#!" class="hashtag">
+					#visitSEDONA
+				</a>
+				<div class="social">
+					<a href="#!" class="icon"></a>
+					<a href="#!" class="icon"></a>
+					<a href="#!" class="icon"></a>
+				</div>
+				<div class="author">
+					<span>Разработано</span>
+					<img src="" alt="">
+				</div>
+			</footer>
+			<div class="modal-success">
+				<p>Ваш отзыв отправлен!</p>
+				<p>Спасибо за ваше участие, ваш отзыв уже поступил к нам.В ближайшее время мы опубликуем его на сайте.</p>
+				<button type="button">ЗАкРЫТЬ ОКНО</button>
+			</div>
+			<div class="modal-failed">
+				<p>ЧТО-ТО ПОШЛО НЕ ТАК!</p>
+				<p>Проверьте поля, выделенные красным, скорее всего вы забыли их заполнить</p>
+				<button type="button">OK</button>
+			</div>
+        </main>
+        <script src="js/script.js"></script>
+    </body>
+</html>
