@@ -1,0 +1,54 @@
+@use 'variables';
+@use 'mixins';
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	border: 0;
+	padding: 0;
+	white-space: nowrap;
+	clip-path: inset(100%);
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+}
+
+.page {
+	height: 100%;
+	font-size: 10px;
+	font-family: variables.$primary-text, "Arial", sans-serif;
+	line-height: 27px;
+}
+
+.page__body {
+	min-height: 100%;
+	margin: 0;
+	background-color: variables.$white;
+	color: variables.$black;
+}
+
+.container {
+	margin: 0 auto;
+	padding: 0 10px;
+
+	@media (min-width: variables.$desktop-width) {
+		padding: 0 20px;
+		max-width: 1200px;
+	}
+}
+
+.base-text {
+	@include mixins.fontSecondary;
+	text-transform: uppercase;
+}
+
+.base-title {
+	@include mixins.fontPrimary;
+	text-transform: uppercase;
+}

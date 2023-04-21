@@ -1,0 +1,24 @@
+@use 'variables';
+
+@mixin base {
+	font-weight: 600;
+	font-family: 'PT Sans Bold';
+}
+
+@mixin fontPrimary {
+	font-size: 1.8rem;
+	@include base;
+
+	@media (min-width: variables.$tablet-width) {
+		font-size: 2.1rem;
+	}
+}
+
+@mixin fontSecondary {
+	font-size: 1.8rem;
+	@include base;
+	
+	@media (min-width: variables.$tablet-width) {
+		font-size: 1.4rem;
+	}
+}
