@@ -2,7 +2,6 @@
 
 .main-header {
 	min-height: 56px;
-	background-color: variables.$white;
 	display: flex;
 	flex-direction: column;
 	position: relative;
@@ -27,20 +26,41 @@
 	}
 }
 
-.main-nav  {
+.main-nav {
 	min-width: 100%;
+	align-items: center;
+	align-content: center;
+	display: grid;
 
 	&--closed {
 		background-color: variables.$white;
-		
-		.main-nav__toggle {
-			background-image: url('./../img/decor/vectors/menu.svg');
-		}
-		.main-nav__list {
+
+		.main-nav__wrapper {
 			display: none;
 
 			@media (min-width: variables.$tablet-width) {
-				display: flex;
+				display: block;
+				max-width: variables.$desktop-width;
+				margin: 0 auto;
+				padding: 0 20px;
+			}
+		}
+
+		.main-nav__toggle {
+			&::before {
+				content: "";
+				position: absolute;
+				top: 15px;
+				left: 17px;
+				width: 23px;
+				height: 4px;
+				background-color: variables.$primary;
+				box-shadow: 0 8px 0 0  variables.$primary, 0 16px 0 0  variables.$primary;
+
+				&:active {
+					background-color: fade( variables.$primary, 30%);
+					box-shadow: 0 8px 0 0 fade( variables.$primary, 30%), 0 16px 0 0 fade( variables.$primary, 30%);
+				}
 			}
 		}
 	}
@@ -53,12 +73,56 @@
 			background-color: variables.$primary;
 			display: flex;
 			justify-content: center;
-			padding-top: 50px;
 			min-width: 100%;
+			top: 0;
+		}
+
+		
+		.site-list__item {
+		
+			&:not(:first-of-type) {
+				box-shadow: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
+				0px 0px 1px 1px rgba(255, 255, 255, 0.2) inset;
+			}
+
+			&:first-of-type {
+				box-shadow: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset;
+			}
+			&:last-of-type {
+				box-shadow: 0px -3px 4px 0px rgba(0, 0, 0, 0.2) inset,
+				0px 0px 1px 1px rgba(255, 255, 255, 0.2) inset;
+			}
 		}
 
 		.main-nav__toggle {
-			background-image: url('./../img/decor/vectors/closeMenu.svg');
+			top: 0;
+			right: 0;
+			left: auto;
+
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				top: 24px;
+				left: 18px;
+				width: 22px;
+				height: 3px;
+				background-color: variables.$white;
+			}
+
+			&::before {
+				transform: rotate(45deg);
+				box-shadow: none;
+			}
+
+			&::after {
+				transform: rotate(-45deg);
+			}
+
+			&:active::before,
+			&:active::after {
+				background-color: fade(variables.$white, 30%);
+			}
 		}
 
 		.base-text {
@@ -66,10 +130,67 @@
 		}
 	}
 
-	&--nojs {
+	&--closed.main-nav--nojs {
 		background-color: variables.$white;
 		display: flex;
 		flex-direction: column;
+		min-width: 100%;
+
+		.main-nav__wrapper {
+			display: grid;
+			background-color: variables.$primary;
+			justify-content: center;
+			min-width: 100%;
+			top: 0;
+			padding-top: 100px;
+
+			@media (min-width: variables.$tablet-width) {
+				background-color: variables.$white;
+			}
+		}
+
+		ul.main-nav__list {
+			display: flex;
+			flex-wrap: wrap;
+			min-width: 100%;
+		}
+
+		.site-list__item {
+			min-width: 100%;
+			&:not(:first-of-type) {
+				box-shadow: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
+				0px 0px 1px 1px rgba(255, 255, 255, 0.2) inset;
+			}
+			
+			&:first-of-type {
+				box-shadow: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset;
+			}
+			&:last-of-type {
+				box-shadow: 0px -3px 4px 0px rgba(0, 0, 0, 0.2) inset,
+				0px 0px 1px 1px rgba(255, 255, 255, 0.2) inset;
+			}
+
+			&--active a {
+				color: variables.$secondary;
+			}
+
+			@media (min-width: variables.$tablet-width) {
+				min-width: auto;
+				&:not(:first-of-type),
+				&:first-of-type,
+				&:last-of-type  {			
+					box-shadow: none;
+				}
+			}
+			
+			a {
+				color: variables.$white;
+
+				@media (min-width: variables.$tablet-width) {
+					color: variables.$black;
+				}
+			}
+		}
 
 		.main-nav__toggle {
 			display: none;
@@ -104,21 +225,25 @@
 	}
 
 	&__list {
-		display: flex;
-		flex-direction: column;
+		display: grid;
+		min-width: 100%;
 
 		@media (min-width: variables.$tablet-width) {
-			flex-direction: row;
-			min-width: inherit;
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+			grid-area: menu menu space menu menu;
+			gap: 20px;
+			min-width: 100%;
 		}
 	}
 }
 
 .site-list {
-	a {
-		color: variables.$black;
+	text-align: center;
+
+	&__item a {
 		transition: 0.3s;
 		text-decoration: none;
+		line-height: 3;
 
 		&:hover {
 			opacity: 0.6;
