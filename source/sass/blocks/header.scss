@@ -1,5 +1,7 @@
 @use "variables";
 
+$logo-width: 185px;
+
 .main-header {
 	min-height: 56px;
 	display: flex;
@@ -7,16 +9,15 @@
 	position: relative;
 
 	&__logo {
-		width: 185px;
+		width: $logo-width;
 		height: 96px;
 		position: absolute;
 		top: 0;
-		left: 50%;
-		transform: translate(-50%, 0);
+		left: calc(50% - $logo-width / 2);
 		z-index: 0;
 
 		img {
-			width: 185px;
+			width: $logo-width;
 			height: 96px;
 		}
 	}
@@ -42,7 +43,6 @@
 				display: block;
 				max-width: variables.$desktop-width;
 				margin: 0 auto;
-				padding: 0 20px;
 			}
 		}
 
@@ -55,11 +55,11 @@
 				width: 23px;
 				height: 4px;
 				background-color: variables.$primary;
-				box-shadow: 0 8px 0 0  variables.$primary, 0 16px 0 0  variables.$primary;
+				box-shadow: 0 8px 0 0 variables.$primary, 0 16px 0 0 variables.$primary;
 
 				&:active {
-					background-color: fade( variables.$primary, 30%);
-					box-shadow: 0 8px 0 0 fade( variables.$primary, 30%), 0 16px 0 0 fade( variables.$primary, 30%);
+					background-color: fade(variables.$primary, 30%);
+					box-shadow: 0 8px 0 0 fade(variables.$primary, 30%), 0 16px 0 0 fade(variables.$primary, 30%);
 				}
 			}
 		}
@@ -77,20 +77,16 @@
 			top: 0;
 		}
 
-		
 		.site-list__item {
-		
 			&:not(:first-of-type) {
-				box-shadow: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
-				0px 0px 1px 1px rgba(255, 255, 255, 0.2) inset;
+				box-shadow: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset, 0px 0px 1px 1px rgba(255, 255, 255, 0.2) inset;
 			}
 
 			&:first-of-type {
 				box-shadow: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset;
 			}
 			&:last-of-type {
-				box-shadow: 0px -3px 4px 0px rgba(0, 0, 0, 0.2) inset,
-				0px 0px 1px 1px rgba(255, 255, 255, 0.2) inset;
+				box-shadow: 0px -3px 4px 0px rgba(0, 0, 0, 0.2) inset, 0px 0px 1px 1px rgba(255, 255, 255, 0.2) inset;
 			}
 		}
 
@@ -146,28 +142,31 @@
 
 			@media (min-width: variables.$tablet-width) {
 				background-color: variables.$white;
+				padding-top: 0;
 			}
 		}
 
 		ul.main-nav__list {
-			display: flex;
-			flex-wrap: wrap;
-			min-width: 100%;
+			display: grid;
+			grid-template-columns: repeat(5, 1fr);
+			&::after {
+				content: "";
+				grid-column: 3 / 4;
+				grid-row: 1 / 3;
+			}
 		}
 
 		.site-list__item {
 			min-width: 100%;
 			&:not(:first-of-type) {
-				box-shadow: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset,
-				0px 0px 1px 1px rgba(255, 255, 255, 0.2) inset;
+				box-shadow: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset, 0px 0px 1px 1px rgba(255, 255, 255, 0.2) inset;
 			}
-			
+
 			&:first-of-type {
 				box-shadow: 0px -1px 1px 0px rgba(0, 0, 0, 0.2) inset;
 			}
 			&:last-of-type {
-				box-shadow: 0px -3px 4px 0px rgba(0, 0, 0, 0.2) inset,
-				0px 0px 1px 1px rgba(255, 255, 255, 0.2) inset;
+				box-shadow: 0px -3px 4px 0px rgba(0, 0, 0, 0.2) inset, 0px 0px 1px 1px rgba(255, 255, 255, 0.2) inset;
 			}
 
 			&--active a {
@@ -178,12 +177,12 @@
 				min-width: auto;
 				&:not(:first-of-type),
 				&:first-of-type,
-				&:last-of-type  {			
+				&:last-of-type {
 					box-shadow: none;
 				}
 			}
-			
-			a {
+
+			&:not(.site-list__item--active) a {
 				color: variables.$white;
 
 				@media (min-width: variables.$tablet-width) {
@@ -226,13 +225,16 @@
 
 	&__list {
 		display: grid;
-		min-width: 100%;
+		grid-template-columns: repeat(5, 1fr);
+
+		&::after {
+			content: "";
+			grid-column: 3 / 4;
+			grid-row: 1 / 3;
+		}
 
 		@media (min-width: variables.$tablet-width) {
-			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-			grid-area: menu menu space menu menu;
 			gap: 20px;
-			min-width: 100%;
 		}
 	}
 }
@@ -240,17 +242,22 @@
 .site-list {
 	text-align: center;
 
-	&__item a {
-		transition: 0.3s;
-		text-decoration: none;
-		line-height: 3;
-
-		&:hover {
-			opacity: 0.6;
+	&__item {
+		@media (min-width: variables.$tablet-width) {
+			padding: 0 10px;
 		}
+		a {
+			transition: 0.3s;
+			text-decoration: none;
+			line-height: 3;
 
-		&:active {
-			opacity: 0.3;
+			&:hover {
+				opacity: 0.6;
+			}
+
+			&:active {
+				opacity: 0.3;
+			}
 		}
 	}
 }
